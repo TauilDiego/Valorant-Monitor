@@ -1,0 +1,36 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<html>
+    <body> 
+        <div id="app">
+
+            <div class="main">
+
+                <div v-for="pessoa in message">
+                    {{pessoa.nome}}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: []
+        }
+    })
+    fetch('https://raw.githubusercontent.com/TauilDiego/teste/master/test.json?token=AH6BJJOGPDT2KX5LCRBUIC27IRNEC')
+    .then(res=> res.json())
+    .then(res=>{
+        app.message = res.data
+    })
+</script>
+
+<style>
+    p{
+        color: blue;
+        font-size: 100px;
+    }
+</style>
